@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(249, 242, 229);
+    font-family: monospace;
+}
+
+.description {
+    height: 150px;
+    width: 250px;
+    color: rgb(79, 69, 69);
+    float: left;
+    margin: 15px 0 0 195px;
+    font-size: 24px;
+}
+
+.bold {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.ball_space {
+    float: right;
+    height: 100vh;
+    margin-right: 400px;
+    position: relative;
+}
+
+.ball {
+    height: 115px;
+    width: 115px;
+    border-radius: 50%;
+    background-color: #ff6122;
+    position: absolute;
+    top: 0;
+    box-shadow: 1px 1px 3px 2px #FC7D4B;
+}
+
+.level_box {
+    position: absolute;
+    top: 300px;
+    left: 200px;
+    color: #ff6122;
+    font-size: 32px;
+}
+
+.message_area  {
+    display: none;
+    width: 550px;
+    position: absolute;
+    margin: 250px 400px;
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: 1.5px;
+    color: rgb(68, 145, 75);
+    font-weight: bold;
+}
+
+.hidden {
+    background-color: rgb(249, 242, 229);
+    box-shadow: 1px 1px 6px 3px rgb(249, 242, 229);
+}
