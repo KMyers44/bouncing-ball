@@ -7,22 +7,28 @@ $(document).ready(function () {
 
     ballBounce(duration);
 
-
-    ball.on('click', function () {
+    $('body').on('click', ball, function () {
         var message = getMessage();
         var level = getLevel();
 
-        ball.stop();
+        if (!ball.hasClass('paused')) {
 
-        appendLevel(message, level);
-        renderMessage(appendLevel(message, level));
-        counter++;
+            ball.stop(true);
 
-        setTimeout(function() {
-            goAwayMessage();
-            duration = duration * 0.8;
-            ballBounce(duration);
-        }, 2000);
+            appendLevel(message, level);
+            renderMessage(appendLevel(message, level));
+            counter++;
+            ball.addClass('paused');
+            ball.addClass('animation');
+
+            setTimeout(function () {
+                goAwayMessage();
+                duration = duration * 0.9;
+                ballBounce(duration);
+                ball.removeClass('paused');
+                ball.removeClass('animation');
+            }, 2000);
+        }
     });
 
 
@@ -71,11 +77,10 @@ $(document).ready(function () {
         return counter;
     }
 
+
     //make message time out
     function goAwayMessage () {
         $('.message_area').empty();
     }
-
-    //turn off event listener and then on so box can't be clicked more than 1x/level
 
 });
