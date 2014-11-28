@@ -2,35 +2,50 @@
 
 $(document).ready(function () {
     var ball = $('.ball');
-    var counter = 1;
+    var messageArea = $('.message_area');
+    var levelBox = $('.level_box');
+    var level = 1;
     var duration = 1500;
 
     ballBounce(duration);
+    renderLevel();
 
     $('body').on('click', ball, function () {
         var message = getMessage();
-        var level = getLevel();
+        messageArea.show();
 
         if (!ball.hasClass('paused')) {
 
-            ball.stop(true);
-
-            appendLevel(message, level);
-            renderMessage(appendLevel(message, level));
-            counter++;
-            ball.addClass('paused');
-            ball.addClass('animation');
+            level++;
+            stopBall ();
+            renderLevel();
+            renderMessage(message, level);
+            pauseAndHideBall ();
 
             setTimeout(function () {
                 goAwayMessage();
                 duration = duration * 0.9;
                 ballBounce(duration);
-                ball.removeClass('paused');
-                ball.removeClass('animation');
+                moveAndShowBall ();
+                messageArea.hide();
             }, 2000);
         }
     });
 
+
+    function stopBall () {
+        ball.stop(true); //stop ball when clicked
+    }
+
+    function moveAndShowBall () {
+        ball.removeClass('paused');  //make ball visible and moving again
+        ball.removeClass('hidden');
+    }
+
+    function pauseAndHideBall () {
+        ball.addClass('paused'); //hide ball when clicked
+        ball.addClass('hidden');
+    }
 
     function ballBounce (duration) {
        ball.animate({top: '500px'}, duration);
@@ -38,7 +53,6 @@ $(document).ready(function () {
            ballBounce(duration);
        });
     }
-
 
     function getMessage () {
         var messages = [
@@ -55,32 +69,22 @@ $(document).ready(function () {
         return messages[Math.floor(Math.random() * messages.length)];
     }
 
+    function renderLevel () {
+        var currentLevel = 'Level' + ' ' + '-' + ' ' + getLevel();
+        return levelBox.text(currentLevel);  //find level and update in box
 
-    function appendLevel (message, level) {
-        var message = getMessage();
-        var currentLevel = ' Level' + '-' + getLevel();
-        var result = message.concat(currentLevel);
-
-        //append level after random message
-        return result;
     }
 
-
-    //show the message
     function renderMessage (randomMessage) {
-        $('.message_area').text(randomMessage);
+        messageArea.text(randomMessage);   //show the message
     }
 
-
-    //find current level
     function getLevel () {
-        return counter;
+        return level;   //find current level
     }
 
-
-    //make message time out
     function goAwayMessage () {
-        $('.message_area').empty();
+        messageArea.empty();  //make message time out
     }
 
 });
