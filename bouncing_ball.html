@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Bouncing Ball</title>
+
+        <style>
+
+            body {
+                background-color: rgb(249, 242, 229);
+            }
+
+            .description {
+                height: 150px;
+                width: 250px;
+                color: rgb(79, 69, 69);
+                float: left;
+                margin: 15px 0 0 170px;
+                font-family: monospace;
+                font-size: 24px;
+            }
+
+            .bold {
+                font-size: 32px;
+                font-weight: bold;
+            }
+
+            .ball_space {
+                float: right;
+                height: 100vh;
+                width: 200px;
+                margin-right: 200px;
+                position: relative;
+            }
+
+            .ball {
+                height: 115px;
+                width: 115px;
+                border-radius: 50%;
+                background-color: #ff6122;
+                position: absolute;
+                top: 0;
+            }
+
+            .message_area {
+                width: 700px;
+                position: absolute;
+                top: 400px;
+                left: 250px;
+                text-align: center;
+                font-size: 30px;
+                color: rgb(68, 145, 75);
+                font-weight: bold;
+                letter-spacing: 0.1em;
+            }
+
+        </style>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div class="description">
+                <p class="bold">Catch the Bouncing Ball</p>
+                <p>Click the ball to advance to the next level.</p>
+            </div>
+
+            <div class="ball_space">
+                <div class="ball"></div>
+            </div>
+
+            <div class="message_area"></div>
+
+        </div>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="bouncing_ball.js"></script>
+
+    </body>
+</html>
